@@ -1,3 +1,9 @@
+# dotenv
+.env
+
+# google oauth 정보
+google_client_info.json
+
 # Logs
 logs
 *.log
