@@ -1,15 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import GoogleOAuth from "./pages/GoogleOAuth";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import Dashboard from "./pages/Dashboard";
+
+const { VITE_GOOGLE_OAUTH_CLIENT_ID } = import.meta.env;
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/redirect" element={<GoogleOAuth />} />
-      </Routes>
-    </BrowserRouter>
+    <GoogleOAuthProvider clientId={`${VITE_GOOGLE_OAUTH_CLIENT_ID}`}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
 
