@@ -16,12 +16,19 @@ const GlobalStyle = createGlobalStyle`
     list-style:none;
     list-style-type:none;
   }
+  
+  button {
+    all: unset;
+  }
 
   html, body {
+    font-family: 'Noto Sans KR', sans-serif;
+
     margin:0;
     padding:0;
     width:100%;
     height: 100%;
+    background-color:#0A131D;
   }  
 `;
 
