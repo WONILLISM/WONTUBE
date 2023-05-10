@@ -44,7 +44,7 @@ const Home = () => {
     <RootStyle>
       <SignInBox>
         <LogoArea>
-          <img src="./assets/logo8.png" width={100} />
+          <img src="./assets/logo2.png" width={160} />
         </LogoArea>
         <ActionArea>
           <YoutubeLogin />
