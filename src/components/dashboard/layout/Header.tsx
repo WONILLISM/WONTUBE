@@ -45,7 +45,7 @@ const IconButton = styled.button`
   }
 `;
 const Logo = styled.div`
-  /* padding: 18px 14px 16px 14px; */
+  margin-left: 20px;
 `;
 
 const SearchBar = styled.div`
@@ -80,11 +80,15 @@ const MenuArea = styled.div`
   gap: 16px;
 `;
 
-const Header = () => {
+interface HeaderProps {
+  handleSidebarOpen: () => void;
+}
+
+const Header = ({ handleSidebarOpen }: HeaderProps) => {
   return (
     <RootStyle>
       <NavArea>
-        <IconButton>
+        <IconButton onClick={handleSidebarOpen}>
           <RxMenuIcon size="24px" />
         </IconButton>
         <Logo>
