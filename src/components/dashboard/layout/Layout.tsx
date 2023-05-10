@@ -3,7 +3,10 @@ import styled from "styled-components";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
+const WEB_HEIGHT = 56;
+
 const MainWrapper = styled.div`
+  margin-top: ${WEB_HEIGHT}px;
   display: flex;
 `;
 
