@@ -1,12 +1,6 @@
-import axios from "axios";
-import { googleLogout } from "@react-oauth/google";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import qs from "qs";
-import { Params } from "../common/interface/Params";
+import { googleLogout } from "@react-oauth/google";
 import PoupularVideo from "../components/PoupularVideo";
-
-const { VITE_YOUTUBE_API_URL } = import.meta.env;
 
 const Dashboard = () => {
   const navigate = useNavigate();
