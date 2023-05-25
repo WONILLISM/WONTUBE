@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
-import Layout from "./components/dashboard/layout/Layout";
+import Main from "./pages/Main";
+import Layout from "./components/main/layout/Layout";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Layout />}>
-          <Route path="" element={<Dashboard />} />
+        <Route path="/main" element={<Layout />}>
+          <Route path="" element={<Main />} />
         </Route>
       </Routes>
     </BrowserRouter>
