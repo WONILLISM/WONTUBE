@@ -1,7 +1,22 @@
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import YoutubeLogin from "../components/YoutubeLogin";
 
-const RootStyle = styled.div`
+const AuthLayout = () => {
+  return (
+    <AuthLayoutStyle>
+      <AuthBox>
+        <LogoArea>
+          <img src="./assets/logo2.png" width={160} />
+        </LogoArea>
+        <ActionArea>
+          <Outlet />
+        </ActionArea>
+      </AuthBox>
+    </AuthLayoutStyle>
+  );
+};
+
+const AuthLayoutStyle = styled.div`
   position: absolute;
   top: 0;
   right: 0;
@@ -14,7 +29,7 @@ const RootStyle = styled.div`
   align-items: center;
 `;
 
-const SignInBox = styled.div`
+const AuthBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,19 +54,4 @@ const ActionArea = styled.div`
   padding: 20px;
 `;
 
-const Home = () => {
-  return (
-    <RootStyle>
-      <SignInBox>
-        <LogoArea>
-          <img src="./assets/logo2.png" width={160} />
-        </LogoArea>
-        <ActionArea>
-          <YoutubeLogin />
-        </ActionArea>
-      </SignInBox>
-    </RootStyle>
-  );
-};
-
-export default Home;
+export default AuthLayout;

@@ -1,19 +1,26 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import { useRoutes } from "react-router-dom";
+
+import AuthLayout from "./layouts/auth";
+import MainLayout from "./layouts/main";
+import Login from "./pages/Login";
 import Main from "./pages/Main";
-import Layout from "./components/main/layout/Layout";
 
 const Router = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/main" element={<Layout />}>
-          <Route path="" element={<Main />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+  return useRoutes([
+    {
+      path: "/",
+      element: <AuthLayout />,
+      children: [{ path: "login", element: <Login /> }],
+    },
+    {
+      path: "/main",
+      element: <MainLayout />,
+      children: [
+        { path: "", element: <Main /> },
+        { path: "subscription", element: <div>hi</div> },
+      ],
+    },
+  ]);
 };
 
 export default Router;

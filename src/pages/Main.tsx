@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { googleLogout } from "@react-oauth/google";
-import PoupularVideo from "../components/PoupularVideo";
+import PoupularVideo from "../components/main/PoupularVideo";
 
-const Dashboard = () => {
+const Main = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -21,4 +21,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Main;
