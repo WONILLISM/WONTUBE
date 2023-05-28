@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
+import Header from "./MainHeader";
+import Sidebar from "./MainSidebar";
 import { useState } from "react";
 
 const WEB_HEIGHT = 56;
@@ -17,7 +17,7 @@ const RootStyle = styled.div`
   flex-direction: column;
 `;
 
-const Layout = () => {
+const MainLayout = () => {
   const [openSidebar, setOpenSidebar] = useState<boolean>(false);
 
   const handleSidebarOpen = () => {
@@ -35,4 +35,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default MainLayout;

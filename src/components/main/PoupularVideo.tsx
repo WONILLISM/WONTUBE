@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import qs from "qs";
-import { Params } from "../common/interface/Params";
-import { VideoItem } from "../common/interface/Video";
-import VideoCard from "./Card/VideoCard";
+import { Params } from "../../common/interface/Params";
+import { VideoItem } from "../../common/interface/Video";
+import VideoCard from "../Card/VideoCard";
 import styled from "styled-components";
 
 const { VITE_YOUTUBE_API_URL, VITE_YOUTUBE_API_KEY } = import.meta.env;
