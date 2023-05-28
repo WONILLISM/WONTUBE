@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
   
   button {
     all: unset;
+    cursor: pointer;
   }
 
   html, body {
@@ -29,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
     width:100%;
     height: 100%;
     background-color:#0A131D;
+    color: #ffffff;
   }  
 `;
 

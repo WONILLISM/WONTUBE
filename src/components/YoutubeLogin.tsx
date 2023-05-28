@@ -26,10 +26,9 @@ const YoutubeLogin = () => {
     onSuccess: (res) => {
       // console.log(res);
       localStorage.setItem("access-token", res.access_token);
-      navigate("/dashboard");
+      navigate("/main");
     },
-    scope:
-      "https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/spreadsheets",
+    scope: "https://www.googleapis.com/auth/youtube",
   });
   return (
     <ButtonStyle onClick={() => login()}>
