@@ -1,8 +1,39 @@
+import { useState } from "react";
+import axios from "axios";
 import { IoSearchOutline as IoSearchOutlineIcon } from "react-icons/io5";
 import styled from "styled-components";
 import Input from "../../components/Input";
+import qs from "qs";
+
+const { VITE_YOUTUBE_API_URL, VITE_YOUTUBE_API_KEY } = import.meta.env;
 
 const MainSearchBar = () => {
+  const [searchText, setSearchText] = useState<string>("");
+
+  const fetchSearchResult = async () => {
+    const params = {
+      part: "snippet",
+      q: searchText,
+      key: VITE_YOUTUBE_API_KEY,
+    };
+
+    const response = await axios.get(`${VITE_YOUTUBE_API_URL}/search`, {
+      paramsSerializer: (params) => qs.stringify(params),
+      params: params,
+    });
+    console.log(response);
+  };
+
+  const handleSearchText = (e: any) => {
+    setSearchText(e.target.value);
+  };
+
+  const handleSearchTextSubmit = () => {
+    if (!!searchText) {
+      fetchSearchResult();
+    }
+  };
+
   return (
     <MainSearchBarStyle>
       <SearchTextField>
@@ -11,9 +42,10 @@ const MainSearchBar = () => {
           name="search"
           placeholder="검색어를 입력해주세요."
           autoComplete="off"
+          onChange={handleSearchText}
         />
       </SearchTextField>
-      <SearchButton>
+      <SearchButton onClick={handleSearchTextSubmit}>
         <IoSearchOutlineIcon size={"24px"} />
       </SearchButton>
     </MainSearchBarStyle>
