@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { googleLogout } from "@react-oauth/google";
-import PoupularVideo from "../components/main/PoupularVideo";
+// import PoupularVideo from "../components/main/PoupularVideo";
+import VideoListView from "../components/main/VideoListView";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -16,7 +17,8 @@ const Main = () => {
       <div>
         <button onClick={handleLogout}>logout</button>
       </div>
-      <PoupularVideo />
+      {/* <PoupularVideo /> */}
+      <VideoListView />
     </div>
   );
 };

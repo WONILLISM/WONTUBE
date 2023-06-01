@@ -4,6 +4,42 @@ import {
   MdHomeFilled as MdHomeFilledIcon,
   MdOutlineEnergySavingsLeaf as MdOutlineEnergySavingsLeafIcon,
 } from "react-icons/md";
+import { useSetRecoilState } from "recoil";
+import { VideoTypeState } from "../../common/atom/ViewState";
+import { VideoType } from "../../common/interface/View";
+
+interface SidebarProps {
+  open: boolean;
+}
+
+const Sidebar = ({ open }: SidebarProps) => {
+  const setVideoType = useSetRecoilState(VideoTypeState);
+
+  const handleMenuItemClick = (type: VideoType) => {
+    setVideoType(type);
+  };
+  return (
+    <RootStyle>
+      <MenuList width={open ? 160 : 72}>
+        <MenuItem open={open} onClick={() => handleMenuItemClick("popular")}>
+          <MdHomeFilledIcon size={24} />
+          <div>홈</div>
+        </MenuItem>
+        <MenuItem
+          open={open}
+          onClick={() => handleMenuItemClick("subscription")}
+        >
+          <MdSubscriptionsIcon size={24} />
+          <div>구독</div>
+        </MenuItem>
+        <MenuItem open={open} onClick={() => handleMenuItemClick("shorts")}>
+          <MdOutlineEnergySavingsLeafIcon size={24} />
+          <div>Shorts</div>
+        </MenuItem>
+      </MenuList>
+    </RootStyle>
+  );
+};
 
 const MenuItem = styled.li<{
   open: boolean;
@@ -51,30 +87,5 @@ const RootStyle = styled.div`
   height: 100%;
   z-index: 9;
 `;
-
-interface SidebarProps {
-  open: boolean;
-}
-
-const Sidebar = ({ open }: SidebarProps) => {
-  return (
-    <RootStyle>
-      <MenuList width={open ? 160 : 72}>
-        <MenuItem open={open} onClick={() => {}}>
-          <MdHomeFilledIcon size={24} />
-          <div>홈</div>
-        </MenuItem>
-        <MenuItem open={open}>
-          <MdSubscriptionsIcon size={24} />
-          <div>구독</div>
-        </MenuItem>
-        <MenuItem open={open}>
-          <MdOutlineEnergySavingsLeafIcon size={24} />
-          <div>Shorts</div>
-        </MenuItem>
-      </MenuList>
-    </RootStyle>
-  );
-};
 
 export default Sidebar;
