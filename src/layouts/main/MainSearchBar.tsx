@@ -1,36 +1,23 @@
-import { useState } from "react";
-import axios from "axios";
 import { IoSearchOutline as IoSearchOutlineIcon } from "react-icons/io5";
 import styled from "styled-components";
 import Input from "../../components/Input";
-import qs from "qs";
-
-const { VITE_YOUTUBE_API_URL, VITE_YOUTUBE_API_KEY } = import.meta.env;
+import { useSetRecoilState } from "recoil";
+import { SearchTextState, VideoTypeState } from "../../common/atom/ViewState";
+import { useState } from "react";
 
 const MainSearchBar = () => {
-  const [searchText, setSearchText] = useState<string>("");
-
-  const fetchSearchResult = async () => {
-    const params = {
-      part: "snippet",
-      q: searchText,
-      key: VITE_YOUTUBE_API_KEY,
-    };
-
-    const response = await axios.get(`${VITE_YOUTUBE_API_URL}/search`, {
-      paramsSerializer: (params) => qs.stringify(params),
-      params: params,
-    });
-    console.log(response);
-  };
+  const [searchInput, setSearchInput] = useState<string>("");
+  const setSearchText = useSetRecoilState(SearchTextState);
+  const setVideoType = useSetRecoilState(VideoTypeState);
 
   const handleSearchText = (e: any) => {
-    setSearchText(e.target.value);
+    setSearchInput(e.target.value);
   };
 
   const handleSearchTextSubmit = () => {
-    if (!!searchText) {
-      fetchSearchResult();
+    if (!!searchInput) {
+      setSearchText(searchInput);
+      setVideoType("search");
     }
   };
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import qs from "qs";
-import { Params } from "../../common/interface/Params";
 import { VideoItem } from "../../common/interface/Video";
 import VideoCard from "../Card/VideoCard";
 import styled from "styled-components";
@@ -12,7 +11,7 @@ const PoupularVideo = () => {
   const [videoList, setVideoList] = useState<VideoItem[]>();
 
   const fetchVideoList = async () => {
-    const params: Params = {
+    const params = {
       part: "snippet",
       chart: "mostPopular",
       regionCode: "KR",
@@ -27,7 +26,7 @@ const PoupularVideo = () => {
           params: params,
         }
       );
-      console.log(response.data.items);
+      // console.log(response.data.items);
       setVideoList(response.data.items);
     } catch (error) {
       console.log(error);
