@@ -12,6 +12,10 @@ export interface VideoItem {
     categoryId: string;
     channelId: string;
     channelTitle: string;
+    resourceId: {
+      kind: string;
+      channelId: string;
+    };
     defaultAudioLanguage: string;
     description: string;
     liveBroadcastContent: string;

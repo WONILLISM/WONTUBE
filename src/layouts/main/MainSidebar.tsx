@@ -1,33 +1,31 @@
+import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
 import {
   MdSubscriptions as MdSubscriptionsIcon,
   MdHomeFilled as MdHomeFilledIcon,
   MdOutlineEnergySavingsLeaf as MdOutlineEnergySavingsLeafIcon,
 } from "react-icons/md";
-import { useSetRecoilState } from "recoil";
-import { VideoTypeState } from "../../common/atom/ViewState";
-import { VideoType } from "../../common/interface/View";
 
 interface SidebarProps {
   open: boolean;
 }
 
 const Sidebar = ({ open }: SidebarProps) => {
-  const setVideoType = useSetRecoilState(VideoTypeState);
+  const navigate = useNavigate();
 
-  const handleMenuItemClick = (type: VideoType) => {
-    setVideoType(type);
+  const handleMenuItemClick = (path: string) => {
+    navigate(path);
   };
   return (
     <RootStyle>
       <MenuList width={open ? 160 : 72}>
-        <MenuItem open={open} onClick={() => handleMenuItemClick("popular")}>
+        <MenuItem open={open} onClick={() => handleMenuItemClick("/main")}>
           <MdHomeFilledIcon size={24} />
           <div>홈</div>
         </MenuItem>
         <MenuItem
           open={open}
-          onClick={() => handleMenuItemClick("subscription")}
+          onClick={() => handleMenuItemClick("subscriptions")}
         >
           <MdSubscriptionsIcon size={24} />
           <div>구독</div>

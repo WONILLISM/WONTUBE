@@ -1,24 +1,14 @@
 import { IoSearchOutline as IoSearchOutlineIcon } from "react-icons/io5";
 import styled from "styled-components";
 import Input from "../../components/Input";
-import { useSetRecoilState } from "recoil";
-import { SearchTextState, VideoTypeState } from "../../common/atom/ViewState";
+
 import { useState } from "react";
 
 const MainSearchBar = () => {
   const [searchInput, setSearchInput] = useState<string>("");
-  const setSearchText = useSetRecoilState(SearchTextState);
-  const setVideoType = useSetRecoilState(VideoTypeState);
 
   const handleSearchText = (e: any) => {
     setSearchInput(e.target.value);
-  };
-
-  const handleSearchTextSubmit = () => {
-    if (!!searchInput) {
-      setSearchText(searchInput);
-      setVideoType("search");
-    }
   };
 
   return (
@@ -32,7 +22,7 @@ const MainSearchBar = () => {
           onChange={handleSearchText}
         />
       </SearchTextField>
-      <SearchButton onClick={handleSearchTextSubmit}>
+      <SearchButton onClick={() => {}}>
         <IoSearchOutlineIcon size={"24px"} />
       </SearchButton>
     </MainSearchBarStyle>

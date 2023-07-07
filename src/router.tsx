@@ -4,6 +4,8 @@ import AuthLayout from "./layouts/auth";
 import MainLayout from "./layouts/main";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
+import Subscriptions from "./pages/Subscriptions";
+import Shorts from "./pages/Shorts";
 
 const Router = () => {
   return useRoutes([
@@ -17,7 +19,8 @@ const Router = () => {
       element: <MainLayout />,
       children: [
         { path: "", element: <Main /> },
-        { path: "subscription", element: <div>hi</div> },
+        { path: "subscriptions", element: <Subscriptions /> },
+        { path: "shorts", element: <Shorts /> },
       ],
     },
   ]);

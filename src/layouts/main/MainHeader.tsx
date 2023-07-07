@@ -5,6 +5,10 @@ import {
   IoPersonCircleOutline as IoPersonCircleOutlineIcon,
 } from "react-icons/io5";
 import MainSearchBar from "./MainSearchBar";
+import { useEffect, useState } from "react";
+import { getAccessToken } from "../../common/api/auth";
+import { googleLogout } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
 const WEB_HEIGHT = 56;
 
@@ -13,6 +17,16 @@ interface HeaderProps {
 }
 
 const Header = ({ handleSidebarOpen }: HeaderProps) => {
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = getAccessToken();
+    if (token) {
+      setAccessToken(token);
+    }
+  }, [accessToken]);
+
   return (
     <RootStyle>
       <NavArea>
@@ -26,6 +40,15 @@ const Header = ({ handleSidebarOpen }: HeaderProps) => {
 
       <MainSearchBar />
       <MenuArea>
+        <button
+          onClick={() => {
+            googleLogout();
+            localStorage.removeItem("access-token");
+            navigate("/login", { replace: true });
+          }}
+        >
+          logout
+        </button>
         <IoNotificationsIcon size={"24px"} />
         <IoPersonCircleOutlineIcon size={"24px"} />
       </MenuArea>
